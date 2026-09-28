@@ -239,7 +239,7 @@ Product Return Rate
 Delivery Delay vs Return Rate
 
 This page moves from what happened to where the operational pressure exists.
-![Root Cause & Operations](Power_Bi_Dashboard/RootCause_Operations.png)
+![Root Cause & Operations](Power_Bi_Dashboard/RootCause_&_Operations.png)
 
 Page 3 — Q4 Leakage Analysis
 
