@@ -9,6 +9,8 @@
 
 ## 1. 🎯 Business Problem
 
+Our Q4 profit has declined significantly compared with Q3, but I want to understand more than just the headline decline. Can you identify where the profit leakage is occurring, determine which commercial and operational factors are contributing to the deterioration, and identify the areas where NovCart may have opportunities to recover value?” The analyst would then investigate the Q3-to-Q4 profitability change, examine factors such as discounts, product costs, shipping costs, returns, delivery performance, payment failures, and regional performance, and finally quantify modeled recovery opportunities under clearly defined assumptions. The purpose of the analysis is therefore to move from simply identifying that profit declined to understanding where the value is being lost, what factors require further investigation, and where potential recovery may exist.
+
 NovCart experienced a significant deterioration in financial performance
 from Q3 to Q4.
 
