@@ -1,0 +1,638 @@
+{
+  "project": {
+    "name": "AI-Powered Revenue Leakage & Root-Cause Intelligence Platform",
+    "purpose": "Provide a validated business intelligence layer that explains revenue and profit changes, identifies operational and commercial hotspots, quantifies modeled financial opportunities, and communicates recommendations through a natural-language AI Business Agent.",
+    "data_grain": "order-line",
+    "currency": "INR",
+    "currency_symbol": "₹",
+    "analysis_period": {
+      "comparison": "Q3 vs Q4",
+      "data_year": 2025
+    },
+    "governance_principles": [
+      "Use validated analytical results rather than inventing numbers.",
+      "Describe financial figures as modeled opportunities or exposure, not realized or audited leakage.",
+      "Raw financial opportunities may overlap and should not automatically be interpreted as additive realized savings.",
+      "Statistical association does not establish causality.",
+      "If the validated analysis does not support a question, explicitly state that evidence is unavailable.",
+      "All monetary values are INR unless the user explicitly requests conversion."
+    ]
+  },
+
+  "data_overview": {
+    "file": "ecommerce_cleaned.csv",
+    "rows": 7155,
+    "columns": 70,
+    "unique_orders": 4312,
+    "unique_customers": 2580,
+    "unique_order_lines": 7155,
+    "duplicate_order_lines": 0,
+    "net_revenue_inr": 138000000,
+    "missing_values": {
+      "delivery_days": 35,
+      "customer_rating": 71,
+      "marketing_source": 71,
+      "campaign": 35
+    }
+  },
+
+  "semantic_layer": {
+    "revenue": {
+      "definition": "Total net revenue.",
+      "formula": "SUM(net_revenue)",
+      "unit": "INR",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name",
+        "marketing_source",
+        "campaign"
+      ]
+    },
+    "profit": {
+      "definition": "Total profit.",
+      "formula": "SUM(profit)",
+      "unit": "INR",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name",
+        "marketing_source",
+        "campaign"
+      ]
+    },
+    "profit_margin": {
+      "definition": "Profit as a percentage of net revenue.",
+      "formula": "SUM(profit) / SUM(net_revenue)",
+      "unit": "percentage",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "orders": {
+      "definition": "Number of unique orders.",
+      "formula": "nunique(order_id)",
+      "unit": "count",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "customers": {
+      "definition": "Number of unique customers.",
+      "formula": "nunique(customer_id)",
+      "unit": "count",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "aov": {
+      "definition": "Average order value.",
+      "formula": "SUM(net_revenue) / nunique(order_id)",
+      "unit": "INR",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "return_rate": {
+      "definition": "Share of orders marked as returned.",
+      "formula": "returned_orders / total_orders",
+      "unit": "percentage",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name",
+        "return_reason"
+      ]
+    },
+    "delivery_delay_rate": {
+      "definition": "Share of orders with a delivery delay.",
+      "formula": "delayed_orders / total_orders",
+      "unit": "percentage",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "payment_failure_rate": {
+      "definition": "Share of orders or payments with payment failure.",
+      "formula": "failed_payments / total_payments",
+      "unit": "percentage",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "payment_method"
+      ]
+    },
+    "discount_rate": {
+      "definition": "Discount relative to pre-discount order value.",
+      "formula": "SUM(discount_amount) / SUM(gross_revenue)",
+      "unit": "percentage",
+      "dimensions": [
+        "month",
+        "quarter",
+        "region",
+        "category",
+        "product_name"
+      ]
+    },
+    "roas": {
+      "definition": "Return on advertising spend.",
+      "formula": "attributed_revenue / ad_spend",
+      "unit": "ratio",
+      "dimensions": [
+        "month",
+        "quarter",
+        "marketing_source",
+        "campaign"
+      ]
+    }
+  },
+
+  "kpi_summary": {
+    "overall": {
+      "total_net_revenue_inr": 138000000,
+      "unique_orders": 4312,
+      "unique_customers": 2580
+    },
+    "q3": {
+      "revenue_inr": 38648876.03,
+      "profit_inr": 9422741.18
+    },
+    "q4": {
+      "revenue_inr": 27815737.82,
+      "profit_inr": 5235715.39,
+      "return_rate": 0.1725,
+      "return_rate_pct": 17.25,
+      "payment_failure_rate": 0.0651,
+      "payment_failure_rate_pct": 6.51,
+      "roas": {
+        "october_approx": 27.3,
+        "november_approx": 27.8,
+        "december_approx": 25.3
+      }
+    },
+    "q3_to_q4_change": {
+      "revenue_change_inr": -10833138.21,
+      "revenue_change_pct": -28.03,
+      "profit_change_inr": -4187025.79,
+      "profit_change_pct": -44.44
+    }
+  },
+
+  "root_cause_findings": {
+    "regional_delivery": {
+      "hotspot": "West",
+      "q4_delay_rate": 0.7433632019704434,
+      "q4_delay_rate_pct": 74.34,
+      "delay_change_percentage_points": 48.64532019704434,
+      "estimated_profit_recovery_inr": 123553.582457,
+      "estimated_profit_recovery_formatted": "₹1,23,553.58",
+      "interpretation": "West is the validated regional delivery-delay hotspot.",
+      "caution": "Hotspot concentration does not establish causality."
+    },
+
+    "regional_returns": {
+      "hotspot": "West",
+      "return_change_percentage_points": 6.513862313235355,
+      "interpretation": "West is the validated regional return hotspot based on the analyzed return-rate change.",
+      "caution": "Hotspot concentration does not establish causality."
+    },
+
+    "product_hotspot": {
+      "product": "Wireless Earbuds",
+      "q4_return_rate": 0.185921,
+      "q4_return_rate_pct": 18.59,
+      "return_change_percentage_points": 11.787934,
+      "q4_delay_rate": 0.205776,
+      "q4_delay_rate_pct": 20.58,
+      "caution": "Product hotspot concentration does not establish causality."
+    },
+
+    "return_reasons": {
+      "quality_issue_pct": 33.13,
+      "damaged_pct": 21.34,
+      "changed_mind_pct": 20.33,
+      "late_delivery_pct": 17.68,
+      "wrong_item_pct": 7.52
+    }
+  },
+
+  "statistical_evidence": {
+    "delivery_delay_vs_return": {
+      "test": "Chi-square test of association",
+      "chi_square": 52.97022937728347,
+      "p_value": 3.386423054573113e-13,
+      "p_value_formatted": "3.39e-13",
+      "interpretation": "Delivery delay and return status are statistically associated in the analyzed data.",
+      "business_interpretation": "The result supports investigating the relationship between delivery delays and returns.",
+      "causality": "Not established."
+    },
+
+    "wireless_earbuds_vs_other_products": {
+      "test": "Chi-square test of association",
+      "chi_square": 72.14710228982987,
+      "p_value": 1.997387933382537e-17,
+      "p_value_formatted": "2.00e-17",
+      "interpretation": "Wireless Earbuds status and return status are statistically associated in the analyzed data.",
+      "business_interpretation": "The result supports investigating Wireless Earbuds as a return hotspot.",
+      "causality": "Not established."
+    }
+  },
+
+  "financial_opportunities": {
+    "discount_recovery_inr": 2448201.172930543,
+    "discount_recovery_formatted": "₹24,48,201.17",
+    "marketing_efficiency_recovery_inr": 607966.8769773893,
+    "marketing_efficiency_recovery_formatted": "₹6,07,966.88",
+    "return_reduction_inr": 422237.3023843269,
+    "return_reduction_formatted": "₹4,22,237.30",
+    "delivery_recovery_inr": 123553.582457,
+    "delivery_recovery_formatted": "₹1,23,553.58",
+    "shipping_cost_recovery_inr": 28818.117938388656,
+    "shipping_cost_recovery_formatted": "₹28,818.12",
+    "raw_total_opportunity_inr": 3630777.0526871625,
+    "raw_total_opportunity_lakh": 36.307770526871625,
+    "raw_total_opportunity_formatted": "₹36.31 lakh",
+    "conservative_opportunity_inr": 3203240.03,
+    "conservative_opportunity_lakh": 32.0324003,
+    "conservative_opportunity_formatted": "₹32.03 lakh",
+    "governance": {
+      "meaning": "Scenario-based modeled opportunity, not audited or realized leakage.",
+      "overlap": "Raw opportunities may overlap.",
+      "conservative_method": "Notebook applies overlap controls between operational and commercial scenarios."
+    }
+  },
+
+  "business_story": {
+    "headline": "Q4 experienced a larger deterioration in profit than revenue.",
+    "revenue_story": "Revenue fell 28.03% from Q3 to Q4.",
+    "profit_story": "Profit fell 44.44% from Q3 to Q4, a larger percentage decline than revenue.",
+    "operational_signals": [
+      "West had a Q4 delivery delay rate of 74.34%, with a 48.65 percentage-point increase.",
+      "West was also the regional return hotspot based on the validated return-rate change.",
+      "Wireless Earbuds had an 18.59% Q4 return rate, increasing by 11.79 percentage points.",
+      "Quality issues, damaged products, changed-mind returns, and late delivery are the main validated return reasons."
+    ],
+    "commercial_signals": [
+      "Discounting represents the largest modeled financial opportunity in the validated analysis.",
+      "Marketing efficiency has a modeled opportunity.",
+      "December ROAS was approximately 25.3 versus approximately 27.8 in November.",
+      "Q4 payment failure rate was 6.51%."
+    ],
+    "statistical_signals": [
+      "Delivery delay and returns are statistically associated.",
+      "Wireless Earbuds and return status are statistically associated.",
+      "Neither statistical test establishes causality."
+    ]
+  },
+
+  "question_answer_map": {
+    "profit_decline": {
+      "questions": [
+        "Why is profit down?",
+        "Why did profit decline?",
+        "Why did we make less profit in Q4?",
+        "What happened to profit?",
+        "Explain the Q3 to Q4 profit decline.",
+        "Why did Q4 profit fall?"
+      ],
+      "answer": {
+        "summary": "Profit declined by ₹4,187,025.79, or 44.44%, from Q3 to Q4.",
+        "q3_profit": "₹94,22,741.18",
+        "q4_profit": "₹52,35,715.39",
+        "validated_signals": [
+          "Discounting created a modeled opportunity of ₹24,48,201.17.",
+          "Returns created a modeled opportunity of ₹4,22,237.30.",
+          "Delivery operations had a modeled opportunity of ₹1,23,553.58.",
+          "Marketing efficiency had a modeled opportunity of ₹6,07,966.88.",
+          "Q4 payment failure rate was 6.51%."
+        ],
+        "caution": "The available analysis identifies these as business signals and modeled opportunities; it does not establish that any single factor caused the entire profit decline."
+      }
+    },
+
+    "revenue_decline": {
+      "questions": [
+        "Why did revenue decline?",
+        "How much did revenue fall?",
+        "Why is revenue down?",
+        "Explain the revenue decline."
+      ],
+      "answer": {
+        "summary": "Revenue declined by ₹10,833,138.21, or 28.03%, from Q3 to Q4.",
+        "q3_revenue": "₹3,86,48,876.03",
+        "q4_revenue": "₹2,78,15,737.82",
+        "caution": "The validated analysis identifies several operational and commercial signals but does not establish that one specific factor caused the overall revenue decline."
+      }
+    },
+
+    "regional_delivery": {
+      "questions": [
+        "Which region has the biggest delivery problem?",
+        "Which region has the highest delivery delays?",
+        "Where is the biggest delivery issue?",
+        "Which region has the worst delivery performance?"
+      ],
+      "answer": {
+        "hotspot": "West",
+        "q4_delay_rate": "74.34%",
+        "delay_change": "48.65 percentage points",
+        "modeled_delivery_opportunity": "₹1,23,553.58",
+        "caution": "West is a validated delivery hotspot, but hotspot concentration does not establish causality."
+      }
+    },
+
+    "regional_returns": {
+      "questions": [
+        "Which region has the biggest return problem?",
+        "Which region has the highest increase in returns?",
+        "Where are returns increasing the most?"
+      ],
+      "answer": {
+        "hotspot": "West",
+        "return_change": "6.51 percentage points",
+        "caution": "Regional concentration does not establish causality."
+      }
+    },
+
+    "product_returns": {
+      "questions": [
+        "Which product has the highest return rate?",
+        "Which product returns the most?",
+        "What product is the return hotspot?",
+        "Which product has the biggest return problem?"
+      ],
+      "answer": {
+        "product": "Wireless Earbuds",
+        "q4_return_rate": "18.59%",
+        "return_rate_change": "11.79 percentage points",
+        "q4_delay_rate": "20.58%",
+        "caution": "Product hotspot concentration does not establish causality."
+      }
+    },
+
+    "return_reasons": {
+      "questions": [
+        "What are the main reasons for returns?",
+        "Why are customers returning products?",
+        "What causes most returns?"
+      ],
+      "answer": {
+        "quality_issue": "33.13%",
+        "damaged": "21.34%",
+        "changed_mind": "20.33%",
+        "late_delivery": "17.68%",
+        "wrong_item": "7.52%"
+      }
+    },
+
+    "statistical_association": {
+      "questions": [
+        "Is delivery delay associated with returns?",
+        "Is there a relationship between delivery delays and returns?",
+        "What statistical evidence supports delivery delays and returns?",
+        "What is the p-value for delivery delay versus returns?"
+      ],
+      "answer": {
+        "test": "Chi-square test of association",
+        "chi_square": 52.97,
+        "p_value": "3.39e-13",
+        "interpretation": "Delivery delay and return status are statistically associated in the analyzed data.",
+        "caution": "Association does not establish causality."
+      }
+    },
+
+    "causality": {
+      "questions": [
+        "Does delivery delay cause returns?",
+        "Did West cause the revenue decline?",
+        "Did Wireless Earbuds cause the return problem?",
+        "Can you prove delivery delays cause returns?"
+      ],
+      "answer": "The validated analysis does not establish causality. It identifies statistical associations and hotspots, but these should not be interpreted as proof that one factor caused another."
+    },
+
+    "financial_opportunity": {
+      "questions": [
+        "How much modeled opportunity is associated with discounting?",
+        "What is the total modeled opportunity?",
+        "How much opportunity is associated with returns?",
+        "How much opportunity is associated with marketing?",
+        "How much opportunity is associated with delivery?"
+      ],
+      "answer": {
+        "discounting": "₹24,48,201.17",
+        "marketing_efficiency": "₹6,07,966.88",
+        "returns": "₹4,22,237.30",
+        "delivery": "₹1,23,553.58",
+        "shipping": "₹28,818.12",
+        "raw_total": "₹36.31 lakh",
+        "conservative_total": "₹32.03 lakh",
+        "caution": "These are modeled opportunities, not realized losses. Raw opportunities may overlap."
+      }
+    },
+
+    "marketing": {
+      "questions": [
+        "What was the ROAS in October?",
+        "What was the ROAS in November?",
+        "What was the ROAS in December?",
+        "Did ROAS decline in December?",
+        "What is the marketing opportunity?"
+      ],
+      "answer": {
+        "october_roas": 27.3,
+        "november_roas": 27.8,
+        "december_roas": 25.3,
+        "modeled_marketing_efficiency_opportunity": "₹6,07,966.88",
+        "interpretation": "December ROAS was lower than November based on the validated approximate monthly figures."
+      }
+    },
+
+    "payment": {
+      "questions": [
+        "What was the Q4 payment failure rate?",
+        "How high was payment failure in Q4?",
+        "Are payment failures a problem?"
+      ],
+      "answer": {
+        "q4_payment_failure_rate": "6.51%",
+        "caution": "The validated summary does not provide enough evidence to attribute the overall revenue decline specifically to payment failures."
+      }
+    },
+
+    "recommendations": {
+      "questions": [
+        "What should management investigate?",
+        "What actions should management take?",
+        "How can we reduce returns?",
+        "What should we investigate about Wireless Earbuds?",
+        "How can we improve the business?"
+      ],
+      "answer": [
+        "Investigate the West-region delivery bottleneck and operational causes behind the 74.34% Q4 delay rate.",
+        "Investigate Wireless Earbuds because its Q4 return rate was 18.59%.",
+        "Review quality and damage issues because they represent major validated return reasons.",
+        "Review discounting strategy because discounting has the largest modeled financial opportunity.",
+        "Review marketing efficiency and December ROAS.",
+        "Investigate payment failures further if detailed payment-method evidence is available."
+      ]
+    }
+  },
+
+  "question_handling": {
+    "supported_question_types": [
+      "Revenue",
+      "Profit",
+      "Profit margin",
+      "Orders",
+      "Customers",
+      "AOV",
+      "Returns",
+      "Delivery delays",
+      "Payment failures",
+      "Discounting",
+      "Marketing",
+      "ROAS",
+      "Regional hotspots",
+      "Product hotspots",
+      "Return reasons",
+      "Statistical association",
+      "Financial opportunities",
+      "Management recommendations"
+    ],
+    "unsupported_questions": [
+      "Future revenue prediction",
+      "Future profit prediction",
+      "Customer-level churn prediction",
+      "Employee responsibility attribution",
+      "Unvalidated campaign recommendations",
+      "Causal claims not supported by the analysis",
+      "Metrics not present in the validated analysis"
+    ],
+    "unsupported_response": "The validated analysis does not contain sufficient evidence to answer this question."
+  },
+
+  "agent_behavior": {
+    "role": "Natural-language interface over validated business analysis.",
+    "primary_source_of_truth": "analysis_results_connected.json",
+    "instructions": [
+      "Answer using only information contained in this JSON.",
+      "Understand natural-language variations of supported questions.",
+      "Connect related findings when answering broad business questions.",
+      "Use validated KPI results for numerical questions.",
+      "Use root-cause findings for hotspot questions.",
+      "Use statistical_evidence for statistical questions.",
+      "Use financial_opportunities for opportunity questions.",
+      "Use business_story when the user asks for an overall explanation.",
+      "Use question_answer_map to understand expected answer components.",
+      "If evidence is unavailable, say so rather than inventing an answer.",
+      "Use concise business language."
+    ],
+    "formatting_rules": [
+      "Use ₹ for INR.",
+      "Use percentage values such as 18.59% instead of decimal values such as 0.185921.",
+      "Format large INR amounts with Indian comma grouping.",
+      "Do not use $ for project financial values.",
+      "Do not expose unnecessary raw JSON values to the user.",
+      "Use modeled opportunity instead of realized loss or leakage when discussing financial estimates.",
+      "Mention the causality limitation when the question involves cause, effect, association, or hotspot interpretation."
+    ],
+    "must_not": [
+      "Invent unsupported numbers.",
+      "Invent missing dimensions.",
+      "Use USD symbols for INR values.",
+      "Call modeled opportunity a realized loss.",
+      "Claim a hotspot caused a business outcome.",
+      "Claim statistical association proves causation.",
+      "Predict future business outcomes using unsupported assumptions.",
+      "Blame a region, product, team, employee, campaign, or customer without validated evidence."
+    ]
+  },
+
+  "recommended_management_focus": [
+    {
+      "area": "West delivery operations",
+      "evidence": "74.34% Q4 delivery delay rate and +48.65 percentage-point change.",
+      "modeled_opportunity": "₹1,23,553.58",
+      "action": "Investigate delivery performance, logistics partners, service areas, and operational bottlenecks."
+    },
+    {
+      "area": "Wireless Earbuds returns",
+      "evidence": "18.59% Q4 return rate and +11.79 percentage-point change.",
+      "action": "Investigate quality, damage, product expectations, and delivery-related return reasons."
+    },
+    {
+      "area": "Return reasons",
+      "evidence": "Quality Issue 33.13%, Damaged 21.34%, Changed Mind 20.33%, Late Delivery 17.68%, Wrong Item 7.52%.",
+      "action": "Investigate quality, damage, delivery, product expectations, and fulfillment processes."
+    },
+    {
+      "area": "Discounting",
+      "evidence": "₹24,48,201.17 modeled discount recovery opportunity.",
+      "action": "Review discount depth, discount effectiveness, and margin impact."
+    },
+    {
+      "area": "Marketing efficiency",
+      "evidence": "₹6,07,966.88 modeled marketing-efficiency opportunity and December ROAS approximately 25.3.",
+      "action": "Review campaign/source efficiency and attribution."
+    },
+    {
+      "area": "Payment failures",
+      "evidence": "Q4 payment failure rate of 6.51%.",
+      "action": "Investigate payment-method and checkout failure patterns if detailed validated breakdowns are available."
+    }
+  ],
+
+  "architecture": {
+    "recommended_flow": [
+      "ecommerce_cleaned.csv",
+      "Data Understanding",
+      "EDA",
+      "Business KPI Analysis",
+      "Root-Cause Analysis",
+      "Statistical Validation",
+      "Financial Impact / Opportunity",
+      "Recommendations",
+      "Power BI Dashboard",
+      "analysis_results_connected.json",
+      "Gemini Natural-Language Business Agent"
+    ],
+    "agent_design": "Use Gemini as a natural-language interface over the validated analysis JSON instead of deterministic Python agent tools and automatic function calling.",
+    "reason": "The analytical work is already completed and validated. The AI layer mainly needs to understand the question, retrieve connected evidence from the compact validated context, and explain it clearly.",
+    "data_flow": {
+      "user_question": "Natural-language business question",
+      "context": "Complete validated analysis JSON",
+      "llm_role": "Interpret question and formulate answer",
+      "analytics_role": "Python notebook performs and validates calculations before JSON generation",
+      "dashboard_role": "Power BI provides interactive visual analytics",
+      "ai_role": "Gemini provides natural-language business explanation"
+    }
+  }
+}
