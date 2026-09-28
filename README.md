@@ -221,6 +221,21 @@ This page establishes the overall performance problem.
 
 ![Executive Performance](Power_Bi_Dashboard/Executive_Performance.png)
 
+Total Revenue: ₹138.00M across the full dataset.
+Total Profit: ₹32.90M.
+Overall Profit Margin: 23.84%.
+Total Orders: 4,312.
+Revenue increased from Q1 through Q3, reaching approximately ₹39M in Q3.
+Q4 revenue dropped sharply to approximately ₹28M.
+Profit followed a similar pattern but experienced a more severe Q4 decline.
+Q3 generated approximately ₹94.23L profit, compared with ₹52.36L in Q4.
+Therefore, Q4 profit declined by approximately ₹41.87L / 44.44% compared with Q3.
+Revenue declined by approximately 28.03%, meaning profit deteriorated faster than revenue.
+North generated the highest overall revenue at approximately ₹40M.
+North also generated the highest overall profit at approximately ₹9.6M.
+The regional results show that the Q4 deterioration was not isolated to one region.
+The page establishes the main business problem: NovCart entered Q4 with significant pressure on both sales and profitability.
+
 Page 2 — Root Cause & Operations
 
 Purpose:
@@ -241,6 +256,27 @@ Delivery Delay vs Return Rate
 This page moves from what happened to where the operational pressure exists.
 ![Root Cause & Operations](Power_Bi_Dashboard/RootCause_&_Operations.png)
 
+Overall Delivery Delay Rate: 5.87%.
+Overall Return Rate: 11.41%.
+Payment Failure Rate: 2.33%.
+Profit Margin: 23.84% for the overall dataset.
+Q4 operational performance was worse than the overall business baseline in several areas.
+West emerged as an important delivery-delay hotspot, with a substantial increase in delivery delays compared with Q3.
+East experienced the largest absolute Q3-to-Q4 profit decline, falling from approximately ₹22.71L to ₹11.43L.
+North also experienced a major profit decline, from approximately ₹26.15L to ₹14.95L.
+Quality issues represented the largest return category, accounting for approximately 33% of returns.
+Damaged products represented another major return category at approximately 21%.
+Changed Mind accounted for approximately 20% of returns.
+Late Delivery accounted for approximately 18% of returns.
+Wrong Item represented approximately 8% of returns.
+Wireless Earbuds had the highest product-level return rate, at approximately 14.41%.
+The analysis showed a strong difference in return rates between delayed and non-delayed orders:
+Delayed orders: 26.61%
+Non-delayed orders: 10.48%
+This indicates that delivery delay is an important operational signal associated with returns.
+However, the analysis does not establish that delivery delays alone cause returns.
+The page therefore identifies multiple areas requiring investigation rather than attributing the entire decline to a single cause.
+
 Page 3 — Q4 Leakage Analysis
 
 Purpose:
@@ -259,6 +295,31 @@ Modeled Recovery Opportunity
 
 This page connects the operational findings to financial impact.
 ![Q4 Leakage Analysis](Power_Bi_Dashboard/Q4Leakage_Analysis.png)
+
+Q4 Profit: ₹52.36L.
+Q3 Profit: ₹94.23L.
+Profit decline: approximately ₹41.87L.
+Profit decline percentage: 44.44%.
+Q3 profit margin was approximately 24.38%.
+Q4 profit margin fell to approximately 18.82%.
+This represents a 5.56 percentage-point deterioration in profit margin.
+The key finding is that profitability deteriorated considerably faster than revenue.
+The Q4 leakage analysis breaks the profitability problem into different cost and operational drivers.
+Discounting was identified as the largest modeled recovery opportunity.
+Other modeled opportunities were associated with:
+Marketing efficiency
+Return reduction
+Delivery improvement
+Shipping costs
+The modeled recovery opportunities should be interpreted as analytical scenarios, not guaranteed savings or audited losses.
+Return analysis shows that quality issues, damaged products, and late delivery are important areas behind product returns.
+The Q3/Q4 comparison shows that the deterioration was broad rather than being explained by one isolated KPI.
+The page connects operational problems from Page 2 with their potential financial impact.
+
+The key management question becomes:
+
+Which leakage drivers should NovCart investigate first to recover profitability?
+
 
 🤖 Agentic AI System
 
@@ -284,7 +345,7 @@ The agent is built around three layers of business knowledge:
         Gemini AI Analyst
                ↓
       Business Answer
-
+Streamlit app:- [https://novcart-ai.streamlit.app/](https://novcart-ai.streamlit.app/)
 The code explicitly combines these three layers into BUSINESS_CONTEXT.
 
 🧠 Semantic Layer
