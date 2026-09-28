@@ -239,7 +239,7 @@ Product Return Rate
 Delivery Delay vs Return Rate
 
 This page moves from what happened to where the operational pressure exists.
-![Root Cause & Operations](Power_BI_Dashboard/RootCause_Operations.png)
+![Root Cause & Operations](Power_Bi_Dashboard/RootCause_Operations.png)
 
 Page 3 — Q4 Leakage Analysis
 
@@ -258,7 +258,7 @@ Return-related leakage
 Modeled Recovery Opportunity
 
 This page connects the operational findings to financial impact.
-![Q4 Leakage Analysis](Power_BI_Dashboard/Q4Leakage_Analysis.png)
+![Q4 Leakage Analysis](Power_Bi_Dashboard/Q4Leakage_Analysis.png)
 
 🤖 Agentic AI System
 
