@@ -219,6 +219,7 @@ Profit by Region
 
 This page establishes the overall performance problem.
 
+![Executive Performance](Power bi Dashboard/Executive Performance.png)
 
 Page 2 — Root Cause & Operations
 
