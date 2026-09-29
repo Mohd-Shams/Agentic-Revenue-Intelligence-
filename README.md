@@ -140,7 +140,6 @@ Which products have high return rates?
 ```
 
 # Recommendations Linked to Key Findings
-========================================
 | Key finding                                                                                                                | Recommendation                                                         | Business action                                                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Profit fell 44.44%** from **₹94.23L in Q3 to ₹52.36L in Q4**, while revenue fell only **28.03%**.                        | **Prioritize margin protection.**                                      | Track profit margin alongside revenue instead of focusing only on sales growth; Q3 margin was **24.38% vs 18.82% in Q4**.                                |
@@ -151,4 +150,32 @@ Which products have high return rates?
 | **Overall return rate was 11.41%** and payment failure rate was **2.33%**.                                                 | **Create operational monitoring.**                                     | Track return rate and payment failures by month, region, product and payment method to identify recurring leakage.                                       |
 | The analysis identified **marketing efficiency** as another recovery area.                                                 | **Improve ROAS efficiency.**                                           | Compare current ROAS with the historical baseline and test reallocating spend from weaker-performing campaigns/segments.                                 |
 | **Shipping cost** was included as a smaller modeled recovery driver.                                                       | **Investigate high shipping-cost segments.**                           | Examine shipping cost as a percentage of revenue by region/product and target unusually expensive combinations.                                          |
+
+
+# NovCart — Project Summary
+
+NovCart is an end-to-end E-commerce Performance & Leakage Analytics platform designed to answer:
+
+Why did profitability deteriorate, where is the business leaking value, and what areas should management investigate for recovery?
+
+What the project does
+
+Python → EDA, statistical analysis, root-cause investigation and modeled recovery scenarios.
+
+SQL → Repeatable business analysis using CTEs, window functions, ranking, customer analysis and Q3–Q4 comparisons.
+
+Power BI → Three-page management story:
+Executive Performance → Root Cause & Operations → Q4 Leakage Analysis
+
+Modeled Opportunity → Estimates potential recovery from discounting, marketing efficiency, returns, delivery and shipping using historical baselines.
+
+AI Agent → Combines an LLM + Semantic Layer + Evidence Layer + Streamlit to let managers ask business questions in natural language and receive grounded answers.
+
+Final business story
+
+Performance declined → root causes were investigated → operational hotspots were identified → potential recovery areas were modeled → findings were converted into an interactive dashboard → AI was added as a conversational decision-support layer.
+
+The key analytical discipline is that observed findings, statistical associations and modeled opportunities are kept separate, so the project does not present assumptions as confirmed financial losses.
+
+
 
