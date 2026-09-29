@@ -41,19 +41,25 @@ The analysis focused on:
 ---
 
 # 2. 🔎 Key Findings
+--Q4 revenue declined by 28.03% compared with Q3, falling from approximately ₹3.86 Cr to ₹2.78 Cr.
 
-- Revenue declined **28.03%** from Q3 to Q4.
-- Profit declined **44.44%**, considerably faster than revenue.
-- Profit margin decreased from **24.38% to 18.82%**.
-- **East** experienced the largest absolute regional profit decline.
-- Delivery delays emerged as an important operational signal associated
-  with higher return rates.
-- **Wireless Earbuds** showed a notable product-level return hotspot.
-- **Quality issues** represented the largest return category.
-- Payment failures represented another potential source of lost orders.
-- Discounting represented the largest **modeled recovery opportunity**.
-- Recovery opportunities are analytical scenarios and are **not guaranteed
-  savings or audited losses**.
+--Q4 profit declined by 44.44%, from ₹94.23L to ₹52.36L — a much sharper deterioration than revenue.
+
+--Profit margin dropped from 24.38% to 18.82%, a decline of 5.56 percentage points, indicating significant margin pressure.
+
+--Returns were a major operational concern, with an overall return rate of approximately 11.41%.
+
+--Delivery delays were strongly associated with returns: delayed orders had a return rate of 26.61%, compared with 10.48% for non-delayed orders.
+
+--The statistical analysis supported this relationship, with χ² = 52.97 and p = 3.39 × 10⁻¹³. This indicates association, not proof of causation.
+
+--Quality issues were the largest return reason, accounting for approximately 32.33% of the return-value breakdown, followed by late delivery and damaged products.
+
+--Wireless Earbuds showed the highest product return rate, at approximately 14.41%, making it an important product-level area for investigation.
+
+--Regional profitability deteriorated from Q3 to Q4, with every region in the reported comparison showing lower Q4 profit.
+
+--The combined analysis identified discounting, marketing efficiency, returns, delivery and shipping as areas for modeled recovery opportunities. These are scenario-based opportunities, not guaranteed savings, and require further validation.
 
 ---
 
