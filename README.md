@@ -41,7 +41,7 @@ The analysis focused on:
 ---
 
 # 2. 🔎 Key Findings
---Q4 revenue declined by 28.03% compared with Q3, falling from approximately ₹3.86 Cr to ₹2.78 Cr.
+- Q4 revenue declined by 28.03% compared with Q3, falling from approximately ₹3.86 Cr to ₹2.78 Cr.
 
 - Q4 profit declined by 44.44%, from ₹94.23L to ₹52.36L — a much sharper deterioration than revenue.
 
