@@ -137,9 +137,18 @@ Which region had the biggest decline in profit?
 Which region generated the most revenue?
 
 Which products have high return rates?
+```
 
-Is delivery delay associated with returns?
+# Recommendations Linked to Key Findings
+========================================
+| Key finding                                                                                                                | Recommendation                                                         | Business action                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Profit fell 44.44%** from **₹94.23L in Q3 to ₹52.36L in Q4**, while revenue fell only **28.03%**.                        | **Prioritize margin protection.**                                      | Track profit margin alongside revenue instead of focusing only on sales growth; Q3 margin was **24.38% vs 18.82% in Q4**.                                |
+| **Delayed orders had a 26.61% return rate vs 10.48% for non-delayed orders** — a **16.13 pp gap**.                         | **Reduce delivery delays.**                                            | Investigate delayed orders by region, product and fulfillment partner, and measure whether lower delays reduce returns.                                  |
+| **Quality issues were ~32.33% of return value**, the largest return category in the dashboard analysis.                    | **Attack product-quality returns first.**                              | Investigate high-return SKUs, quality complaints and supplier/fulfillment issues; prioritize products such as **Wireless Earbuds (14.41% return rate)**. |
+| **East profit fell from ₹22.71L to ₹11.43L**, a decline of about **₹11.28L**; North also fell from **₹26.15L to ₹14.95L**. | **Prioritize regional diagnosis.**                                     | Break down East and North by product, delivery, returns, discounts and shipping to identify the specific drivers behind the profit decline.              |
+| **Modeled recovery opportunity ≈ ₹36.3L**, with discounting representing the largest modeled opportunity.                  | **Test discount optimization rather than blindly reducing discounts.** | Segment discounts by product/customer and run controlled tests to determine whether lower discounting improves profit without damaging conversion.       |
+| **Overall return rate was 11.41%** and payment failure rate was **2.33%**.                                                 | **Create operational monitoring.**                                     | Track return rate and payment failures by month, region, product and payment method to identify recurring leakage.                                       |
+| The analysis identified **marketing efficiency** as another recovery area.                                                 | **Improve ROAS efficiency.**                                           | Compare current ROAS with the historical baseline and test reallocating spend from weaker-performing campaigns/segments.                                 |
+| **Shipping cost** was included as a smaller modeled recovery driver.                                                       | **Investigate high shipping-cost segments.**                           | Examine shipping cost as a percentage of revenue by region/product and target unusually expensive combinations.                                          |
 
-What are the major return reasons?
-
-How much modeled opportunity is associated with discounting?
