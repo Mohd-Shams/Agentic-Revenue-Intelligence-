@@ -103,6 +103,27 @@ deterioration and modeled recovery opportunities.
 # 4. 🤖 Agentic AI 
 **[Launch NovCart AI Analyst](https://novcart-ai.streamlit.app/)**
 
+
+Business-question interface — Managers can ask questions about NovCart’s revenue, profit, returns, delivery, discounts, marketing and other KPIs in natural language.
+
+Uses existing analysis — The agent builds on the validated Python/SQL analysis instead of independently recreating the entire analysis for every question.
+
+Semantic layer — It defines standard meanings for metrics such as Revenue, Profit, Profit Margin, Orders, AOV, Return Rate, Delivery Delay Rate and ROAS.
+
+Metric mapping — Different phrases such as “sales,” “revenue,” or “earnings” can be mapped to the appropriate governed metric.
+
+Evidence-based answers — The agent uses prepared findings/evidence such as Q3–Q4 comparisons, regional changes, operational hotspots and modeled opportunities.
+
+Statistical awareness — It understands that an association between delivery delays and returns does not automatically prove causation.
+
+Business reasoning — Instead of only returning numbers, it explains what the number means for the business and connects related findings.
+
+Recovery analysis — It can explain the modeled opportunities around discounting, marketing efficiency, returns, delivery and shipping.
+
+LLM + application layer — The LLM is used to convert the governed metrics and evidence into a natural-language business response, while the application controls the context supplied to it.
+
+Overall purpose — The agent turns Python + SQL + Power BI findings into a conversational business analyst, allowing management to explore the project findings without manually navigating every analysis.
+
 NovCart includes an AI Business Analyst that allows users to ask
 business questions using natural language.
 
